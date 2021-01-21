@@ -1,0 +1,19 @@
+target/
+.classpath
+.project
+.settings
+# executor/
+cache_executor
+test_executor
+cache_config
+*.log
+bin/
+*.iml
+.idea
+.DS_Store
+output
+.factorypath
+logs
+/daedalus-task/work_root
+
+

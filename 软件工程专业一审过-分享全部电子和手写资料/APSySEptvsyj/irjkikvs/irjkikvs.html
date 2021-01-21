@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.1.1 (452254)"/><meta name="altitude" content="155.923828125"/><meta name="author" content="Wilhelm"/><meta name="created" content="2015-10-12 10:44:14 +0000"/><meta name="latitude" content="45.74123679854706"/><meta name="longitude" content="126.625205838892"/><meta name="source" content="desktop.mac"/><meta name="updated" content="2015-10-12 13:10:17 +0000"/><title>编译原理综合复习</title></head><body>
+<div><b><span style="font-size: 16px;">更多德国留学DIY及签证办理资料访问51deguo论坛 网址：www.51deguo.com</span></b></div>
+<div>词法、句法、语义分析分析</div>
+<div>Lexical, Syntax, Semantic analyze.</div>
+<div><br/></div>
+<div>句法Syntax</div>
+<div>
+<hr/></div>
+<div>形如:<b>S→aS</b>这样的</div>
+<div>例如整数可以表示为</div>
+<div><span style="background-color: rgb(255, 250, 165);-evernote-highlight:true;">S→aS</span></div>
+<div><span style="background-color: rgb(255, 250, 165);-evernote-highlight:true;">S→0-9 | ε</span></div>
+<div><span style="background-color: rgb(255, 250, 165);-evernote-highlight:true;">a→0-9</span></div>
+<div><br/></div>
+<div>Lexical Analyze:</div>
+<div>
+<hr/></div>
+<div>是一个识别token的过程，并把token送给syntax analyzer.将每个单词或者符号转换为对应的内部标识码(token)送给syntax analyzer或者叫做parser</div>
+<div><br/></div>
+<div>词法分析器是通过Finite Automata有穷自动机来实现的。</div>
+<div>自动机的节点表示当前状态，边上表示接受的输入</div>
+<div>双箭头表示初始状态，双线环表示终止状态</div>
+<div><br/></div>
+<div><br/></div>
+<div>Syntax Analyzer/Parser</div>
+<div>
+<hr/></div>
+<div>将输入的token根据句法合并为句法分析树syntax parsing tree</div>
+<div><br/></div>
+<div>分为自顶向下和自底向上两个方式</div>
+<div><br/></div>
+<div>自顶向下：使用最左推导</div>
+<div>步骤：</div>
+<ol>
+<li>消除左递归：eliminate left recursion<img src="%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%BB%BC%E5%90%88%E5%A4%8D%E4%B9%A0.resources/D85743F5-633A-4D6F-A196-0D25EA4371FF.png" height="120" width="754"/></li>
+<li>提取左公因子extract left common factors<img src="%E7%BC%96%E8%AF%91%E5%8E%9F%E7%90%86%E7%BB%BC%E5%90%88%E5%A4%8D%E4%B9%A0.resources/59BA4E77-68E1-4511-8955-DC88BD889274.png" height="157" width="936"/></li>
+</ol>
+<div>LL分析法:</div>
+<ul>
+<li>求出First集，First集是句子片段中的首终结符集</li>
+<li>求出后续符号集Follow set，句法G的各个句型中，A后面可以跟的终结符terminal symbol</li>
+<li>求出Select集，产生式的可选集</li>
+<li>构造预测分析表Predicting Analysis Table，也就是将每个产生式(production)的左侧与select set中的terminal symbol进行组合，</li>
+<li>predicting analysis system从树根开始，取出一个非终结符non-terminal symbol，放到buffer中，从input buffer中拿一个terminal, 在select set 里查找，输出结果名替换掉原来的非终结符</li>
+<li>如果推导串左侧和输入缓冲区的左侧都是terminal，输出并消去</li>
+<li>重复上述步骤知道推导buffer里没有剩余</li>
+</ul>
+<div><br/></div>
+<div><br/></div>
+<div>Semantic Analyze语义分析</div>
+<div>
+<hr/></div>
+<div>根据syntax parsing tree生成中间代码three-address code三地址码。Three-address code 以四元式quaternary的形似出现。</div>
+<div><br/></div>
+<div>而我们通常在第三步真正使用的是Syntax-Directed Definitions，SDD语法制导翻译。在每个production上添加action，在每个symbol上附加attribution。</div>
+<div><br/></div>
+<div>代码优化  Code Optimizing</div>
+<div>
+<hr/></div>
+<div><br/></div>
+</body></html>
