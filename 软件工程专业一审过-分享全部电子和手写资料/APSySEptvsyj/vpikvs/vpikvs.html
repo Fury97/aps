@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.1.1 (452254)"/><meta name="altitude" content="155.6937866210938"/><meta name="author" content="Wilhelm"/><meta name="created" content="2015-10-09 09:50:15 +0000"/><meta name="latitude" content="45.74137118421827"/><meta name="longitude" content="126.6252213213105"/><meta name="source" content="desktop.mac"/><meta name="updated" content="2015-10-13 11:40:07 +0000"/><title>计网综合复习</title></head><body>
+<div><b><span style="font-size: 16px;">更多德国留学DIY及签证办理资料访问51deguo论坛 网址：www.51deguo.com</span></b></div>
+<div>网络延迟的四个来源</div>
+<ul>
+<li>transmission, transmit out of nodes</li>
+<li>nodal processing</li>
+<li>propagation, transmit between nodes</li>
+<li>queueing</li>
+</ul>
+<div><br/></div>
+<div>OSI, Open System Interconnection的五层七层妖塔</div>
+<div><b>七层妖塔：</b></div>
+<ul>
+<li>Application</li>
+<li>Presentation</li>
+<li>Session</li>
+<li>Transport</li>
+<li>Network</li>
+<li>Data Link</li>
+<li>Physical</li>
+</ul>
+<div><img src="%E8%AE%A1%E7%BD%91%E7%BB%BC%E5%90%88%E5%A4%8D%E4%B9%A0.resources/54E4ADD6-BF57-40C0-A382-763E17FD4D10.png" height="1106" width="2038"/></div>
+<div><br/></div>
+<div><b>五层妖塔：</b></div>
+<ul>
+<li>Application, Supporting network applications, HTTP, FTP</li>
+<li>Transport, process-data transfer, TCP, UDP</li>
+<li>Network, routing of datagrams from source to destination, IP</li>
+<li>Link, data transfer between neighboring network elements, ARP</li>
+<li>Physical, trans binary bits.</li>
+</ul>
+<div><br/></div>
+<div><b><span style="font-size: 26px;">Application Layer</span></b></div>
+<div>
+<hr/></div>
+<div>HTTP, FTP, DNS and Socket programming</div>
+<div><br/></div>
+<div><b><span style="font-size: 18px;">HTTP</span></b></div>
+<div>Http uses TCP, it’s can be non-persistent and persistent. </div>
+<div>RTT is the to-and-from-time between client and server.在客户端和服务器之间传输需要两个RTT时间，一个是initiate TCP connection, one is to transmitting file.</div>
+<div>非持续HTTP传输时间为：2RTT+文件传输时间</div>
+<div><br/></div>
+<div>HTTP常见相应码 HTTP response status codes:</div>
+<ul>
+<li>200     OK</li>
+<li>301     Moved Permanently: New location later in this msg.</li>
+<li>400     Bad Reuest: server can’t understand request msg</li>
+<li>404     Net found: request document not found on this this server</li>
+<li>505     HTTP version is not supported</li>
+</ul>
+<div><br/></div>
+<div><b><span style="font-size: 18px;">FTP</span></b></div>
+<div>FTP server port: 21</div>
+<div><br/></div>
+<div><br/></div>
+<div><b><span style="font-size: 18px;">Mail Access Protocols</span></b></div>
+<div>SMTP(Simple Mail Transfer Protocol) use TCP to reliably transfer email message form client to server</div>
+<div>On port 25.</div>
+<div>There are three kinds of SMTP: </div>
+<ul>
+<li>POP3, Post Office Protocol</li>
+<li>IMAP, Internet Mail Access Protocol</li>
+<li>HTTP, Used by gmail, Yahoo!, Mail, etc</li>
+</ul>
+<div><br/></div>
+<div><br/></div>
+<div><b><span style="font-size: 26px;">Transport Layer</span></b></div>
+<div>
+<hr/></div>
+<div>两种主要通信方式TCP和UDP</div>
+<div>复用   Multiplexing，解复用   demultiplexing</div>
+<div><br/></div>
+<div><span style="font-size: 22px;"><b>可靠传输     Reliable data transfer， rdt3.0</b></span></div>
+<ul>
+<li>Acknowledge ack 发送者在发送的消息中标识pkt为0或者1，接受者会期待0或者1。</li>
+<li>When receiver receiver the correct pkt*, it respond with act*.</li>
+<li>When sender receive wrong act* or timeout, it retransmit the data packet.</li>
+</ul>
+<div>然而这么做的效率非常低下。改进方法是using pipeline to increate the efficiency. </div>
+<div><br/></div>
+<div><span style="font-size: 16px;"><b>The improvement is to send it using pipelining.</b></span></div>
+<div><img src="%E8%AE%A1%E7%BD%91%E7%BB%BC%E5%90%88%E5%A4%8D%E4%B9%A0.resources/9EDDA84E-E08B-4947-9BF5-CC0695A5CD2B.png" height="650" width="1250"/></div>
+<div>The concrete implementation is sliding-window protocol. </div>
+<div><img src="%E8%AE%A1%E7%BD%91%E7%BB%BC%E5%90%88%E5%A4%8D%E4%B9%A0.resources/0100E07D-83C7-4211-BAD7-8574C90B3A40.png" height="206" width="690"/></div>
+<div>滑动窗口是对停等协议的一个拓展。Sliding-window protocol. It allows sender to send data more than one piece of data without waiting receiver. 但是出错重传方法仍有两种：</div>
+<ul>
+<li>Go-Back-N   回退N步</li>
+<li>Selective repeat    选择重传</li>
+</ul>
+<div>他们都为每个frame设置一个timer，当timer timeout了，就说明这是一个 bad frame. 回退N步中receiver只会将当前接收到的成功的frame中编号最大的（highest in-order seq）传回。发送者将会从bad frame开始retransmit. 然而selective repeat则不是。receiver将会send all successfully 收到的frame的act, 如果当前接到的frame编号不与已接收的连续，放入缓存但是仍然返回ack。sender发现某个bad frame将会将该frame retransmit，若发现retransmit之后遇到的新帧已经收到act，continuously slide the window and send new frames.</div>
+<div><br/></div>
+<div><b><span style="font-size: 21px;">TCP</span></b></div>
+<div><span style="font-size: 18px;"><b>tcp的可靠传输，reliable data transmit</b></span></div>
+<div>发送者向接受者发送Seq=数据包头部下标, ACK=数据包尾部下标。接受者返回收到的ACK，相当于告诉发送者他在等待的数据。</div>
+<div>『接受者』具体动作：</div>
+<ul>
+<li>当收到的seq就是期待得到的ack，没有正等待回复的ACK, 那么延迟500ms返回对应的ack，来保证发送者的连续性</li>
+<li>当收到的seq就是期待得到的ack，有ACK等待回复，那么立刻全部回复</li>
+<li>如果收到的seq存在间隔且高于期望的seq，那么立刻重复返回期望ack提醒发送者</li>
+</ul>
+<div>『发送者』收到连续三个相同ack就理解为『接受者』期待重发该数据，那么立刻取消超时等待立刻重发。这叫做快速重发”Fast Retransmit"</div>
+<div><br/></div>
+<div><b>TCP的拥塞控制</b></div>
+<div>方法：发送者逐步增加传输速度，当遇到丢包时快速降低发送速度。</div>
+<div>具体方法：发送者从1开始，double发送速度直到threshold. 之后变为linear accelerate。当遇到congestion, timeout或者duplicate acknowledge, 将threshold变为当前速度的一半，并reset sending velocity为initial speed.</div>
+<div><br/></div>
+<div><br/></div>
+<div><b><span style="font-size: 35px;">网络层      Network Layer    IPV4,V6</span></b></div>
+<div>
+<hr/></div>
+<div>特殊IP地址：</div>
+<div>0.0.0.0：公网</div>
+<div><br/></div>
+<div>路由表，记录目的IP地址，子网掩码，下一跳，接口名称（物理接口或其他）</div>
+<div><br/></div>
+<div>NAT: Network Address Translation,  网络地址转换。</div>
+<div><br/></div>
+<div>Local Area Network   局域网</div>
+<div><br/></div>
+<div><br/></div>
+<div>路由选择，选择一个到目标地址最近的路径：</div>
+<div><b>LS大法和DV大法</b></div>
+<div><b>LS大法：</b></div>
+<div><b>Link state.</b> It send “Hello” message to all directly connected neighbors, all nodes send such messages to 邻居，then they know the circumstance they lie in. Then they send link state packet(LSP，链路状态包) to their neighbor, their neighbor forward this LSP to their neighbors until all node receive this packet. Then all nodes know the state of network they can calculate shortest road themselves.</div>
+<div><br/></div>
+<div><br/></div>
+<div><b>Distance Vector大法，距离向量：</b></div>
+<div>It uses Bellman-ford Algorithm to calculate shortest way. 计算好自己的距离信息之后将距离表传递给邻居直到收敛(converge)</div>
+<div><br/></div>
+<div>当运算数量过于庞大时候，不能进行全局的优化只能进行分区分片。</div>
+<div>Network is the network of networks. Each network calculate the optimal routing strategy individually.</div>
+<div><br/></div>
+<div><br/></div>
+<div>链路层  Link Layer</div>
+<div>
+<hr/></div>
+<div>ARP, Address Resolution Protocol</div>
+<div>每个节点记录自己的IP-Mac地址映射</div>
+<div>跨局域网的ARP询问只会返回Router的MAC地址，由Router负责跨局域网发送</div>
+<div>ARP过程：主机A的mac地址是MAA，IP地址是IAA，主机BMAC地址是MBB，IP地址是IBB</div>
+<ul>
+<li>主机A查看自己的ARP表中是否有B的MAC地址，如果有，直接发送</li>
+<li>主机A没有主机B的MAC地址，向局域网内发送一条ARP询问的广播，内容是:
+<ul>
+<li>MAA to FF:FF:FF:FF:FF:FF who has IBB tell IAA</li>
+</ul>
+</li>
+<li>局域网内处理主机B都不会相应这条查询，B发现自己被问到了，就会单播的发送一条响应
+<ul>
+<li>MBB to MAA arp reply IBB is at MBB</li>
+</ul>
+</li>
+</ul>
+<div><br/></div>
+<div><br/></div>
+<div>TODO!!!!</div>
+<div><br/></div>
+<div><br/></div>
+<div>路由器是一个网络层设备，根据IP地址进行数据的储存转发，而Switch交换机只一个链路层Link Layer上的设备，根据MAC地址进行转发</div>
+</body></html>

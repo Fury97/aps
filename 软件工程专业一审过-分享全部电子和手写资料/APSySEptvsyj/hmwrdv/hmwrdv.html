@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/><meta name="exporter-version" content="Evernote Mac 6.1.1 (452254)"/><meta name="altitude" content="143.1589050292969"/><meta name="author" content="Wilhelm"/><meta name="created" content="2015-10-05 08:29:42 +0000"/><meta name="latitude" content="45.74162580660899"/><meta name="longitude" content="126.6304722644753"/><meta name="source" content="desktop.mac"/><meta name="updated" content="2015-10-07 08:50:01 +0000"/><title>软件质量测试</title></head><body>
+<div><b><span style="font-size: 16px;">更多德国留学DIY及签证办理资料访问51deguo论坛 网址：www.51deguo.com</span></b></div>
+<div><span style="font-size: 27px;">Generally Speaking</span></div>
+<div>
+<hr/></div>
+<div>总的来说测试技术分为黑盒测试，白盒测试和灰盒测试。</div>
+<div>黑盒测试：</div>
+<ul>
+<li>边界测试</li>
+<li>特殊值测试</li>
+<li>等价类划分</li>
+<li>回归测试</li>
+<li>决策表测试</li>
+</ul>
+<div>白盒测试：</div>
+<ul>
+<li>DD-Path</li>
+</ul>
+<div><span style="font-size: 27px;"><br/></span></div>
+<div><span style="font-size: 27px;">黑盒测试     Black Box Testing</span></div>
+<div>
+<hr/></div>
+<div>Tester would only know the legal <b>inputs</b> and what the expected <b>outputs</b> should be.</div>
+<div><br/></div>
+<div><b><span style="font-size: 18px;">Boundary Value Testing     边界值测试</span></b></div>
+<div>The most common place where error tends to appear is at the extreme values, like <b>min, min+, nom, max- and max.</b></div>
+<div><img src="%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E6%B5%8B%E8%AF%95.resources/9BC5ED69-6308-43C3-A4AE-B15F8F5DB585.png" height="446" width="926"/></div>
+<div><br/></div>
+<div><br/></div>
+<div><b>Robustness Testing          健壮性</b></div>
+<div>With robustness testing, we can find what happens when the extreme are exceeded with value slightly greater then the maximum or the minimum.</div>
+<div><img src="%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E6%B5%8B%E8%AF%95.resources/CFF9F481-8454-4EC0-B386-B56797E462E7.png" height="450" width="928"/></div>
+<div><br/></div>
+<div><b>Worst-case Testing     最坏情况测试</b></div>
+<div>Worst-case Testing tries to find out what happens when more than one variable has an extreme value. It would generate about 5^n testing cases.</div>
+<div><img src="%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E6%B5%8B%E8%AF%95.resources/0075D75F-6F3C-4600-947E-3BEF1A948D4E.png" height="438" width="922"/></div>
+<div><br/></div>
+<div><b>Robust Worst-case Testing     健壮性最坏情况测试</b></div>
+<div>This is the most complex testing method. It detects muti-error-approaching and robustness at the same time.</div>
+<div><br/></div>
+<div><br/></div>
+<div><span style="font-size: 18px;"><b>Special Value Testing          特殊值测试</b></span></div>
+<div><b><br/></b></div>
+<div><span style="font-size: 18px;"><b>Random Testing          随机值测试</b></span></div>
+<div>This is not an optimal testing tech since it has a low probability of detecting many defects. However, it does sometimes uncover defects that standardize testing techniques might not. Thus, it should be considered as an <i><b>add-on</b></i> testing technique.</div>
+<div><br/></div>
+<div><span style="font-size: 18px;"><b>Equivalence Partitioning     等价类划分测试</b></span></div>
+<div>Divide input data into partitions according its type. Then generate test cases covering each partition at lease once.</div>
+<div>There are four kinds of equivalence class testing:</div>
+<ul>
+<li>Weak Normal Equivalence Class Testing
+<ul>
+<li>Use one variable from each equivalence class</li>
+<li><img src="%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E6%B5%8B%E8%AF%95.resources/727DAF86-680D-4A20-9A67-4D9934CB9216.png" height="217" width="469"/></li>
+</ul>
+</li>
+<li>Strong Normal Equivalence Class Testing
+<ul>
+<li>覆盖所有等价类，并且每个变量都要覆盖。不用覆盖非法输入</li>
+<li><img src="%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E6%B5%8B%E8%AF%95.resources/EC9906B8-C8E7-4FFE-A726-3714F37A39DC.png" height="452" width="924"/></li>
+</ul>
+</li>
+<li>Weak Robust Equivalence Class Testing
+<ul>
+<li>覆盖所有合法输入种类，并把一个输入的非法输入全部覆盖</li>
+<li><img src="%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E6%B5%8B%E8%AF%95.resources/670A5D7C-F1FD-4C41-BFA9-B0294D3C998C.png" height="452" width="922"/></li>
+<li>或者这样也可以</li>
+<li><img src="%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E6%B5%8B%E8%AF%95.resources/0A4F4FFF-E9E5-418F-9A5E-A7C0C72A8EE5.png" height="444" width="926"/></li>
+</ul>
+</li>
+<li>Strong Robust Equivalence Class Testing
+<ul>
+<li>覆盖全部输入样例，每个变量都要全部覆盖，每个非法输入的每个变量也都要覆盖上</li>
+<li><img src="%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E6%B5%8B%E8%AF%95.resources/F2F51CF3-0A75-4278-AEE7-042823A3EF19.png" height="440" width="918"/></li>
+</ul>
+</li>
+</ul>
+<div><br/></div>
+<div><span style="font-size: 18px;"><b>Positive and Negative Testing</b></span></div>
+<div>Since in most cases, positive case are less than negative, <b>it follows the twenty-eighty law.</b> </div>
+<div><br/></div>
+<div><span style="font-size: 18px;"><b>Regression Testing     回归测试，做回归</b></span></div>
+<div>Regression is necessary during the whole develop, maintenance and version upgrading process. It has to be implemented to avoid unintended side effects brought by changes.</div>
+<div><br/></div>
+<div><span style="font-size: 18px;"><b>Decision Table-Based Testing     基于决策表的测试</b></span></div>
+<div>一个表格记录了每个决策变量c<span style="font-size: 9px;">n</span>，相当于一个不同决策的排列组合</div>
+<div><img src="%E8%BD%AF%E4%BB%B6%E8%B4%A8%E9%87%8F%E6%B5%8B%E8%AF%95.resources/7A24AB23-A1E2-4A16-A698-401FB0CD9DDA.png" height="444" width="1038"/></div>
+<div><br/></div>
+<div><br/></div>
+<div><span style="font-size: 27px;">White-Box Testing</span></div>
+<div>
+<hr/></div>
+<div>White box testing is done when the test knows the inner structure of the system. How it functions, how the result is generated. So the white-box test cases are designed by examining paths or logic.</div>
+<div><br/></div>
+<div><b><span style="font-size: 18px;">DD-Path, Decision to decision Path     决策到决策路径</span></b></div>
+<div>省略掉过程中的顺序执行部分，将所有决策部分去除作为一个节点划出一个决策树。</div>
+<div>对DD-Path需要使用<i><b>Statement Coverage Testing</b></i></div>
+<div><i><b><br/></b></i></div>
+<div><span style="font-size: 18px;"><b>Statement Coverage Testing</b></span></div>
+<div>测试样例覆盖掉DD-Path上的每一个分支。由于分支上各个节点之间都是顺序执行的，所以程序的每一个语句都会得到执行。</div>
+<div><br/></div>
+<div><b><span style="font-size: 18px;">Loop Coverage Testing</span></b></div>
+<div>对每个循环执行如下操作：</div>
+<ul>
+<li>Skip the loop entirely</li>
+<li>Only one pass through the loop</li>
+<li>M passes through the loop there m&lt;n</li>
+<li>N-1, N, N+1 passes through the loop</li>
+</ul>
+<div>After testing a loop, shrink it into a point.</div>
+<div><br/></div>
+<div><span style="font-size: 18px;"><b>Top-Down and Bottom-Up Testing</b></span></div>
+<div><b><span style="font-size: 18px;"><br/></span></b></div>
+<div><b><span style="font-size: 18px;"><br/></span></b></div>
+<div><span style="font-size: 27px;"><b>功能测试和结构化测试</b></span></div>
+<div>
+<hr/></div>
+<div><b>Advantage of functional testing:</b></div>
+<ul>
+<li>its natural and understood by everyone. It works directly on the purpose of the system</li>
+<li>Tester needs no knowledge of the implementation, nor specific programming language nor skill.</li>
+<li>Tester and programmer are independent of each other.</li>
+<li>Test cases can be designed as soon as the specifications are completed</li>
+</ul>
+<div><br/></div>
+<div><b>Disadvantage of functional testing:</b></div>
+<ul>
+<li>The input test rages is rather small.</li>
+<li>Since tester has no recognition of implement, programmer can do the trick to cover the errors.</li>
+</ul>
+<div><br/></div>
+<div><b>Advantage of structural testing:</b></div>
+<ul>
+<li>It force developer to be very careful about implementation</li>
+<li>It reveal hidden errors in code.</li>
+</ul>
+<div><br/></div>
+<div><b>Disadvantage of structural testing:</b></div>
+<ul>
+<li>It can’t verify whether the specifications are correct, nor it can detect missing paths and data-sensitive errors.</li>
+<li>It cannot execute all possible logic path through a program because it’s far too particular</li>
+<li>It’s expensive</li>
+</ul>
+</body></html>
